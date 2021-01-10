@@ -1,0 +1,65 @@
+<div class="modal-header bg-dark">
+  <h4 class="modal-title text-white">{{modelTitle}}</h4>
+  <button type="button" class="close text-white" aria-label="Close" (click)="onClickClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- Modal Body -->
+<div class="modal-body p-3">
+  <div class="text-left">
+    <form class="needs-validation" name="adduserForm" [formGroup]="adduserForm" (ngSubmit)="addEditUser()" novalidate>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name"
+          [ngClass]="{'is-invalid': submitted && f.name.errors}">
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <span *ngIf="f.name.errors.required">This value is required.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username"
+          [ngClass]="{'is-invalid': submitted && f.username.errors}">
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <span *ngIf="f.username.errors.required">This value is required.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email" placeholder="Enter email"
+          [ngClass]="{'is-invalid': submitted && f.email.errors}">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <span *ngIf="f.email.errors.required">This value is required.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select name="role" id="role" class="form-control" formControlName="role"
+          [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+          <option value="developer">Developer</option>
+          <option value="tester">Tester</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+          <span *ngIf="f.role.errors.required">This value is required.</span>
+        </div>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="checkmeout0" formControlName="active">
+        <label class="custom-control-label" for="checkmeout0">Active</label>
+        <div *ngIf="submitted && f.active.errors" class="invalid-feedback">
+          <span *ngIf="f.active.errors.required">This value is required.</span>
+        </div>
+      </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-success">{{btntext}}</button>
+        <button type="button" class="btn btn-danger ml-1" (click)="onClickClose()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End body -->

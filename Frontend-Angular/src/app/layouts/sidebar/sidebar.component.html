@@ -1,0 +1,41 @@
+<!-- ========== Left Sidebar Start ========== -->
+<ng-template #contentTemplate>
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+        <ul class="metismenu" id="side-menu" #sideMenu>
+
+            <li>
+                <a href="javascript: void(0);" routerLink="/app/dashboard" routerLinkActive="active"
+                    class="waves-effect" aria-expanded="false">
+                    <i class="fe-airplay"></i>
+                    <span> Dashboards </span>
+                </a>
+            </li>
+            <li *ngFor="let menu of menuItem">
+                <a href="javascript: void(0);" routerLink="{{menu?.link}}" routerLinkActive="active"
+                    class="waves-effect" aria-expanded="false">
+                    <i class="{{menu?.icon}}"></i>
+                    <span> {{menu?.lbl}} </span>
+                </a>
+            </li>
+
+
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="clearfix"></div>
+</ng-template>
+
+
+<div class="left-side-menu">
+    <div class="slimscroll-menu" appSlimScroll *ngIf="!isCondensed">
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+
+    <div class="slimscroll-menu" *ngIf="isCondensed">
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+</div>
+<!-- Left Sidebar End -->
